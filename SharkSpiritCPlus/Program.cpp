@@ -42,7 +42,7 @@ int APIENTRY wWinMain(
 		return DefWindowProc(window->GetHWND(), msg, wParam, lParam);
 	};
 
-	window->SetCallback(wndProc);
+	window->SetWndProc(wndProc);
 
 	ShowWindow(window->GetHWND(), SW_SHOW);
 

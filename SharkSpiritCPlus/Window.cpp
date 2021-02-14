@@ -45,8 +45,8 @@ namespace SSWindow
 			return 0;
 
 		default :
-			if ((m_window_handle) && (m_callback)) {
-				return m_callback(msg, wParam, lParam);
+			if ((m_window_handle) && (m_wndproc_callback)) {
+				return m_wndproc_callback(msg, wParam, lParam);
 			}
 			else
 			{
@@ -114,9 +114,9 @@ namespace SSWindow
 		DestroyWindow(m_window_handle);
 	}
 
-	void Window::SetCallback(WndProcCallBack callback)
+	void Window::SetWndProc(WndProcCallBack callback)
 	{
-		m_callback = callback;
+		m_wndproc_callback = callback;
 	}
 
 	HWND Window::GetHWND()

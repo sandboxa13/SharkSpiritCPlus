@@ -16,7 +16,7 @@ namespace SSWindow
 		Window(const char* title, const  char* class_name, int height, int width, HINSTANCE& hinstance);
 		~Window();
 
-		void SetCallback(WndProcCallBack callback);
+		void SetWndProc(WndProcCallBack callback);
 		HWND GetHWND();
 		LRESULT CALLBACK WndProc(_In_ HWND hwnd, _In_ UINT msg, _In_ WPARAM wParam, _In_ LPARAM lParam);
 	private:
@@ -26,6 +26,6 @@ namespace SSWindow
 		const char* className;
 		HINSTANCE m_hinstance;
 		HWND m_window_handle;
-		WndProcCallBack m_callback;
+		WndProcCallBack m_wndproc_callback;
 	};
 }
