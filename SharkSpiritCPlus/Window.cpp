@@ -2,9 +2,6 @@
 #include <string>
 #include "resource.h"
 
-
-// this bullshit needed if we have different classes for window and message handling
-
 namespace SSWindow 
 {
 	LRESULT CALLBACK DefWndProc(
