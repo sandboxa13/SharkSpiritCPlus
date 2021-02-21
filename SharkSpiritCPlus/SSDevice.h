@@ -24,5 +24,5 @@ private:
 	D3D_FEATURE_LEVEL m_featureLevel = D3D_FEATURE_LEVEL_11_0;
 
 private:
-	HRESULT InitializeDeviceAndSwapChain(HWND &hwnd);
+	HRESULT Initialize(HWND &hwnd);
 };

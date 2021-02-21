@@ -2,10 +2,10 @@
 
 SSDevice::SSDevice(HWND hwnd)
 {
-    InitializeDeviceAndSwapChain(hwnd);
+    Initialize(hwnd);
 }
 
-HRESULT SSDevice::InitializeDeviceAndSwapChain(HWND &hwnd)
+HRESULT SSDevice::Initialize(HWND &hwnd)
 {
     HRESULT hr = S_OK;
 
