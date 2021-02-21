@@ -128,9 +128,6 @@ HRESULT SSDevice::Initialize(HWND &hwnd)
         hr = dxgiFactory->CreateSwapChain(m_device.Get(), &sd, &(m_pSwapChain));
     }
 
-    // Note this tutorial doesn't handle full-screen swapchains so we block the ALT+ENTER shortcut
-    dxgiFactory->MakeWindowAssociation(hwnd, DXGI_MWA_NO_ALT_ENTER);
-
     dxgiFactory->Release();
 
     if (FAILED(hr))
