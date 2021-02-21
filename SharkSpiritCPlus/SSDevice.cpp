@@ -168,8 +168,6 @@ HRESULT SSDevice::InitializeDeviceAndSwapChain(HWND &hwnd)
 
 void SSDevice::Render()
 {
-    float color[4] = { 0.098039225f, 0.098039225f, 0.439215720f, 1.000000000f };
-
-    m_immediateContext.Get()->ClearRenderTargetView(m_pRenderTargetView.Get(), color);
+    m_immediateContext.Get()->ClearRenderTargetView(m_pRenderTargetView.Get(), DirectX::Colors::DarkBlue);
     m_pSwapChain->Present(0, 0);
 }
