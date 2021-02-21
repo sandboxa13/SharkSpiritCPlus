@@ -20,7 +20,7 @@ private:
 	ComPtr<ID3D11DeviceContext1> m_immediateContext1;
 	ComPtr<IDXGISwapChain> m_pSwapChain;
 	ComPtr<IDXGISwapChain1> m_pSwapChain1;
-	ComPtr<ID3D11RenderTargetView> m_pRenderTargetView;
+	ComPtr < ID3D11RenderTargetView> m_pRenderTargetView;
 	D3D_FEATURE_LEVEL m_featureLevel = D3D_FEATURE_LEVEL_11_0;
 
 private:

@@ -142,12 +142,16 @@ HRESULT SSDevice::InitializeDeviceAndSwapChain(HWND &hwnd)
     if (FAILED(hr))
         return hr;
 
-    hr = m_device.Get()->CreateRenderTargetView(pBackBuffer, nullptr, &m_pRenderTargetView);
+    D3D11_RENDER_TARGET_VIEW_DESC render_targer_desc;
+    render_targer_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    render_targer_desc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
+
+    hr = m_device.Get()->CreateRenderTargetView(pBackBuffer, nullptr, m_pRenderTargetView.GetAddressOf());
     pBackBuffer->Release();
     if (FAILED(hr))
         return hr;
 
-    m_immediateContext.Get()->OMSetRenderTargets(1, &m_pRenderTargetView, nullptr);
+    m_immediateContext.Get()->OMSetRenderTargets(1, m_pRenderTargetView.GetAddressOf(), nullptr);
 
     // Setup the viewport
     D3D11_VIEWPORT vp;
