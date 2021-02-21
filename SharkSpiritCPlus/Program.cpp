@@ -2,15 +2,13 @@
 #include "Game.h"
 #include <string>
 
-using namespace SSWindow;
-
 int APIENTRY wWinMain(
 	_In_ HINSTANCE hInstance, 
 	_In_opt_ HINSTANCE prevInstance, 
 	_In_ LPWSTR lpCmdLine, 
 	_In_ int nCmdShow)
 {
-	auto const window = new Window("Shark Spirit", "Shark Spirit", 720, 1280, hInstance);
+	auto const window = new SSWindow::Window("Shark Spirit", "Shark Spirit", 720, 1280, hInstance);
 	auto const game = new Game(window);
 
 	auto wndProc = [&window, &game](UINT msg, WPARAM wParam, LPARAM lParam) -> LRESULT 
