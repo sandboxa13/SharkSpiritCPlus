@@ -36,7 +36,7 @@
     <ClCompile Include="RenderStageBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SSDevice.cpp">
+    <ClCompile Include="GraphicsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClInclude Include="RenderStage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SSDevice.h">
+    <ClInclude Include="GraphicsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,13 @@
-#include "SSDevice.h"
+#include "GraphicsManager.h"
 
-SSDevice::SSDevice(HWND hwnd)
+#pragma comment (lib, "D3D11.lib")
+
+GraphicsManager::GraphicsManager(HWND hwnd)
 {
     Initialize(hwnd);
 }
 
-HRESULT SSDevice::Initialize(HWND &hwnd)
+HRESULT GraphicsManager::Initialize(HWND &hwnd)
 {
     HRESULT hr = S_OK;
 
@@ -163,7 +165,7 @@ HRESULT SSDevice::Initialize(HWND &hwnd)
     return S_OK;
 }
 
-void SSDevice::Render()
+void GraphicsManager::Render()
 {
     m_immediateContext.Get()->ClearRenderTargetView(m_pRenderTargetView.Get(), DirectX::Colors::DarkBlue);
     m_pSwapChain->Present(0, 0);

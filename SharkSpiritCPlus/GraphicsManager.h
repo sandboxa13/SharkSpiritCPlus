@@ -6,11 +6,11 @@
 
 using namespace Microsoft::WRL;
 
-class SSDevice
+class GraphicsManager
 {
 public:
-	SSDevice(HWND hwnd);
-	~SSDevice() = default;
+	GraphicsManager(HWND hwnd);
+	~GraphicsManager() = default;
 	void Render();
 
 private:

@@ -10,5 +10,5 @@ Game::Game(Window* window)
 {
 	ActiveWindow = window;
 
-	m_ss_device = new SSDevice(window->GetHWND());
+	m_ss_device = new GraphicsManager(window->GetHWND());
 }

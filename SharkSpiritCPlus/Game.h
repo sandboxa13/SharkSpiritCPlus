@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Window.h"
-#include "SSDevice.h"
+#include "GraphicsManager.h"
 
 using namespace SSWindow;
 
@@ -9,7 +9,7 @@ class Game
 {
 private:
 	Window* ActiveWindow;
-	SSDevice* m_ss_device;
+	GraphicsManager* m_ss_device;
 public:
 	Game(Window* window);
 	void Render();
