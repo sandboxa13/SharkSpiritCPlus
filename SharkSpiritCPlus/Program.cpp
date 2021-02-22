@@ -9,7 +9,7 @@ int APIENTRY wWinMain(
 	_In_ int nCmdShow)
 {
 	auto const window = new SSWindow::Window("Shark Spirit", "Shark Spirit", 720, 1280, hInstance);
-	auto const game = new Game(window);
+	auto game = std::make_unique<Game>(window);
 
 	auto wndProc = [&window, &game](UINT msg, WPARAM wParam, LPARAM lParam) -> LRESULT 
 	{
@@ -59,6 +59,8 @@ int APIENTRY wWinMain(
 
 		InvalidateRect(window->GetHWND(), nullptr, false);
 	}
+
+	game.reset();
 
 	return msg.wParam;
 }
