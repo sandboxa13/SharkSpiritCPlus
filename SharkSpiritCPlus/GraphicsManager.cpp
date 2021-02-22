@@ -1,6 +1,7 @@
 #include "GraphicsManager.h"
 
 #pragma comment (lib, "D3D11.lib")
+#pragma comment (lib, "d3dcompiler.lib")
 
 GraphicsManager::GraphicsManager(HWND hwnd)
 {
@@ -162,11 +163,101 @@ HRESULT GraphicsManager::Initialize(HWND &hwnd)
     vp.TopLeftY = 0;
     m_immediateContext.Get()->RSSetViewports(1, &vp);
 
+    ID3DBlob* pBlob = nullptr;
+
+    // load and set vertex shader
+    {
+        hr = LoadShader(L"VertexShader.cso", &pBlob);
+
+        if (FAILED(hr))
+            return hr;
+
+        hr = m_device.Get()->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &m_pVertexShader);
+
+        if (FAILED(hr))
+        {
+            pBlob->Release();
+            return hr;
+        }
+
+        D3D11_INPUT_ELEMENT_DESC layout[] =
+        {
+            { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+        };
+        UINT numElements = ARRAYSIZE(layout);
+
+        hr = m_device.Get()->CreateInputLayout(layout, numElements, pBlob->GetBufferPointer(), pBlob->GetBufferSize(), &m_pVertexLayout);
+
+        if (FAILED(hr))
+            return hr;
+
+        m_immediateContext.Get()->IASetInputLayout(m_pVertexLayout.Get());
+    }
+    
+    // load and set pixel shader
+    {
+        hr = LoadShader(L"PixelShader.cso", &pBlob);
+
+        if (FAILED(hr))
+            return hr;
+
+        hr = m_device.Get()->CreatePixelShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &m_pPixelShader);
+
+        if (FAILED(hr))
+        {
+            pBlob->Release();
+            return hr;
+        }
+    }
+
+    struct Vertex
+    {
+        DirectX::XMFLOAT3 Pos;
+    };
+
+    Vertex vertices[] =
+    {
+        DirectX::XMFLOAT3(0.0f, 0.5f, 0.5f),
+        DirectX::XMFLOAT3(0.5f, -0.5f, 0.5f),
+        DirectX::XMFLOAT3(-0.5f, -0.5f, 0.5f),
+    };
+    D3D11_BUFFER_DESC bd = {};
+    bd.Usage = D3D11_USAGE_DEFAULT;
+    bd.ByteWidth = sizeof(Vertex) * 3;
+    bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+    bd.CPUAccessFlags = 0;
+
+    D3D11_SUBRESOURCE_DATA InitData = {};
+    InitData.pSysMem = vertices;
+    hr = m_device.Get()->CreateBuffer(&bd, &InitData, &m_pVertexBuffer);
+
+    if (FAILED(hr))
+        return hr;
+
+    UINT stride = sizeof(Vertex);
+    UINT offset = 0;
+    m_immediateContext.Get()->IASetVertexBuffers(0, 1, m_pVertexBuffer.GetAddressOf(), &stride, &offset);
+
+    // Set primitive topology
+    m_immediateContext.Get()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
     return S_OK;
 }
+
+HRESULT GraphicsManager::LoadShader(const WCHAR* szFileName, ID3DBlob** ppBlobOut)
+{
+    return D3DReadFileToBlob(szFileName, ppBlobOut);
+}
+
 
 void GraphicsManager::Render()
 {
     m_immediateContext.Get()->ClearRenderTargetView(m_pRenderTargetView.Get(), DirectX::Colors::DarkBlue);
+
+    m_immediateContext.Get()->VSSetShader(m_pVertexShader.Get(), nullptr, 0);
+    m_immediateContext.Get()->PSSetShader(m_pPixelShader.Get(), nullptr, 0);
+
+    m_immediateContext.Get()->Draw(3, 0);
+
     m_pSwapChain->Present(0, 0);
 }
