@@ -9,7 +9,7 @@ class Game
 {
 private:
 	Window* ActiveWindow;
-	GraphicsManager* m_ss_device;
+	GraphicsManager* m_graphics;
 public:
 	Game(Window* window);
 	void Render();

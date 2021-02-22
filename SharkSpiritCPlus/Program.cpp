@@ -45,7 +45,6 @@ int APIENTRY wWinMain(
 	ShowWindow(window->GetHWND(), SW_SHOW);
 
 	MSG msg = { nullptr };
-	BOOL gmResult;
 
 	while (true)
 	{
