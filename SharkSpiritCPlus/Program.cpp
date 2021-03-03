@@ -1,5 +1,5 @@
-#include "Window.h"
-#include "Game.h"
+#include "Core//Window.h"
+#include "Engine//Game.h"
 #include <string>
 
 int APIENTRY wWinMain(

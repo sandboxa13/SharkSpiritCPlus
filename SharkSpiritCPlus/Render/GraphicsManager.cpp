@@ -194,7 +194,7 @@ HRESULT GraphicsManager::Initialize(HWND &hwnd)
         m_immediateContext.Get()->IASetInputLayout(m_pVertexLayout.Get());
     }
     
-    // load and set pixel shader
+    // load pixel shader
     {
         hr = LoadShader(L"PixelShader.cso", &pBlob);
 
@@ -221,7 +221,7 @@ HRESULT GraphicsManager::Initialize(HWND &hwnd)
         DirectX::XMFLOAT3(0.5f, -0.5f, 0.5f),
         DirectX::XMFLOAT3(-0.5f, -0.5f, 0.5f),
     };
-    D3D11_BUFFER_DESC bd = {};
+   /* D3D11_BUFFER_DESC bd = {};
     bd.Usage = D3D11_USAGE_DEFAULT;
     bd.ByteWidth = sizeof(Vertex) * 3;
     bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
@@ -236,7 +236,7 @@ HRESULT GraphicsManager::Initialize(HWND &hwnd)
 
     UINT stride = sizeof(Vertex);
     UINT offset = 0;
-    m_immediateContext.Get()->IASetVertexBuffers(0, 1, m_pVertexBuffer.GetAddressOf(), &stride, &offset);
+    m_immediateContext.Get()->IASetVertexBuffers(0, 1, m_pVertexBuffer.GetAddressOf(), &stride, &offset);*/
 
     // Set primitive topology
     m_immediateContext.Get()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -247,6 +247,16 @@ HRESULT GraphicsManager::Initialize(HWND &hwnd)
 HRESULT GraphicsManager::LoadShader(const WCHAR* szFileName, ID3DBlob** ppBlobOut)
 {
     return D3DReadFileToBlob(szFileName, ppBlobOut);
+}
+
+ComPtr<ID3D11Device> GraphicsManager::GetDevice()
+{
+    return m_device;
+}
+
+ComPtr<ID3D11DeviceContext> GraphicsManager::GetDeviceContext()
+{
+    return m_immediateContext;
 }
 
 

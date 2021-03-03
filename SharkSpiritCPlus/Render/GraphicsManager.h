@@ -15,7 +15,9 @@ public:
 	GraphicsManager(HWND hwnd);
 	~GraphicsManager() = default;
 	void Render();
-
+	HRESULT LoadShader(const WCHAR* szFileName, ID3DBlob** ppBlobOut);
+	ComPtr<ID3D11Device> GetDevice();
+	ComPtr<ID3D11DeviceContext> GetDeviceContext();
 private:
 	ComPtr<ID3D11Device> m_device;
 	ComPtr<ID3D11Device1> m_device1;
@@ -32,5 +34,4 @@ private:
 
 private:
 	HRESULT Initialize(HWND &hwnd);
-	HRESULT LoadShader(const WCHAR* szFileName, ID3DBlob** ppBlobOut);
 };

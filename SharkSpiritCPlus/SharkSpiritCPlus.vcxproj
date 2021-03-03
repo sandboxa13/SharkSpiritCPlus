@@ -156,23 +156,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="IndexBufferStage.cpp" />
+    <ClCompile Include="Core\Window.cpp" />
+    <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Engine\SSObject.cpp" />
     <ClCompile Include="Program.cpp" />
-    <ClCompile Include="RenderPipeline.cpp" />
-    <ClCompile Include="RenderStage.cpp" />
-    <ClCompile Include="RenderStageBase.cpp" />
-    <ClCompile Include="GraphicsManager.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Render\GraphicsManager.cpp" />
+    <ClCompile Include="Render\IndexBufferStage.cpp" />
+    <ClCompile Include="Render\RenderPipeline.cpp" />
+    <ClCompile Include="Render\RenderStage.cpp" />
+    <ClCompile Include="Render\RenderStageBase.cpp" />
+    <ClCompile Include="Render\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="IndexBufferStage.h" />
-    <ClInclude Include="RenderPipeline.h" />
-    <ClInclude Include="RenderStage.h" />
+    <ClInclude Include="Core\Window.h" />
+    <ClInclude Include="Engine\Game.h" />
+    <ClInclude Include="Engine\SSObject.h" />
+    <ClInclude Include="Render\GraphicsManager.h" />
+    <ClInclude Include="Render\IndexBuffer.h" />
+    <ClInclude Include="Render\IndexBufferStage.h" />
+    <ClInclude Include="Render\RenderObject.h" />
+    <ClInclude Include="Render\RenderPipeline.h" />
+    <ClInclude Include="Render\RenderStage.h" />
+    <ClInclude Include="Render\VertexBuffer.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="GraphicsManager.h" />
-    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SharkSpiritCPlus.rc" />
@@ -181,13 +187,14 @@
     <Image Include="cake.ico" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PixelShader.hlsl">
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    <FxCompile Include="Shaders\PixelShader.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Shaders)%(Filename).cso</ObjectFileOutput>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Shaders)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    <FxCompile Include="Shaders\VertexShader.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Shaders)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Shaders)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

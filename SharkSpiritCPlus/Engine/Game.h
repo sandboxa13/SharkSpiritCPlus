@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Window.h"
-#include "GraphicsManager.h"
+#include "..//Core/Window.h"
+#include "..//Render//GraphicsManager.h"
 #include "memory.h"
 
 using namespace SSWindow;

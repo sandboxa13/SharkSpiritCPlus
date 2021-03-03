@@ -13,57 +13,84 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{c26b60d6-7c15-469c-a6bf-714e55ea28a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{29e6d566-1e4d-4bb1-9c32-68726aebe63e}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Shaders">
-      <UniqueIdentifier>{67aadab1-429f-489d-a313-7d844e090a24}</UniqueIdentifier>
+      <UniqueIdentifier>{7b089fe3-20a2-47dc-ae6d-658b7b281879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{6419cc3d-5913-4f22-8483-ba73e8d18071}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Core\Window.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\GraphicsManager.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="IndexBufferStage.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\IndexBufferStage.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderPipeline.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\RenderPipeline.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderStage.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\RenderStage.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderStageBase.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\RenderStageBase.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\VertexBuffer.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Game.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SSObject.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Core\Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\GraphicsManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\IndexBuffer.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\IndexBufferStage.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderObject.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderPipeline.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderStage.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\VertexBuffer.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Game.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SSObject.h">
+      <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexBufferStage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderPipeline.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderStage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,10 +104,10 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="VertexShader.hlsl">
+    <FxCompile Include="Shaders\PixelShader.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="PixelShader.hlsl">
+    <FxCompile Include="Shaders\VertexShader.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>

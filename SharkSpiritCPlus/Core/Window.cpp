@@ -1,6 +1,6 @@
 #include "Window.h"
 #include <string>
-#include "resource.h"
+#include "../resource.h"
 
 namespace SSWindow 
 {
